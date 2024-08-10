@@ -4,30 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5db8cee-dd55-46c3-b352-ba25926f839a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/MovieRecommendation(Pycharm).iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Fixing.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Preprocessing.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Preprocessing1.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/datasets/reviews.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sentiment.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/autocomplete.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/default.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/krish-naik.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/movie_placeholder.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/recommend.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/recommend.html" afterDir="false" />
+    <list default="true" id="e5db8cee-dd55-46c3-b352-ba25926f839a" name="Changes" comment="Only using tmdb api">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "LorenMin107"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/LorenMin107/MovieRecommendationSystem.git",
+    "accountId": "e90ac4a7-d2b5-45bc-b2ae-2671760876fd"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -141,12 +131,25 @@
       <workItem from="1723089536987" duration="362000" />
       <workItem from="1723093122404" duration="2030000" />
       <workItem from="1723121180840" duration="3127000" />
-      <workItem from="1723284293780" duration="3232000" />
+      <workItem from="1723284293780" duration="4688000" />
     </task>
+    <task id="LOCAL-00001" summary="Only using tmdb api">
+      <option name="closed" value="true" />
+      <created>1723291077197</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723291077198</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Only using tmdb api" />
+    <option name="LAST_COMMIT_MESSAGE" value="Only using tmdb api" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MovieRecommendation_Pycharm_$main.coverage" NAME="main Coverage Results" MODIFIED="1723284924011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
