@@ -49,9 +49,9 @@
         <h6 id="status" style="color:white;">STATUS: &nbsp;{{status}}</h6>
       </div>
     </div>
-  </div>  
+  </div>
   <br/>
-	
+
 {% for name, details in cast_details.items() if not cast_details.hidden %}
   <div class="modal fade" id="{{details[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -82,7 +82,7 @@
   </div>
   {% endfor %}
 
-  <div class="container"> 
+  <div class="container">
 
     {% if casts|length > 1 %}
       <div class="movie" style="color: #E8E8E8;">
@@ -90,7 +90,7 @@
           <h5>(Click on the cast to know more)</h5>
       </div>
 
-    
+
       <div class="movie-content">
         {% for name, details in casts.items() if not casts.hidden %}
           <div class="castcard card" style="width: 14rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
@@ -121,14 +121,14 @@
                   <th class="text-center" scope="col">Sentiments</th>
                 </tr>
             </thead>
-    
+
           <tbody>
 	    {% for review, status in reviews.items() if not reviews.hidden %}
     	        <tr style="background-color:#e5091485;">
                 <td>{{review}}</td>
                 <td>
 
-                    {{status}} : 
+                    {{status}} :
                     {% if status =='Positive' %}
                       &#128515;
                     {% else %}
@@ -157,8 +157,8 @@
       </div>
     {% endif %}
   <br/>
-   
- 
+
+
     {% if movie_cards|length > 1 %}
 
       <div class="movie" style="color: #E8E8E8;">
@@ -192,7 +192,7 @@
 
   {% else %}
   {% if movie_cards|length > 1 %}
-    <div class="container"> 
+    <div class="container">
       <div class="movie" style="color: #E8E8E8;">
         <h2 style="font-family: 'Rowdies', cursive;">Multiple matches found</h2>
       </div>
