@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
-from flask import Flask, render_template, request
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from flask import Flask, render_template, request, jsonify
 import json
 import bs4 as bs
 import urllib.request
 import pickle
 from pymongo import MongoClient
+from recommendation_engine import rcmd, create_similarity
 
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
@@ -19,41 +18,20 @@ filename = 'nlp_model.pkl'
 clf = pickle.load(open(filename, 'rb'))
 vectorizer = pickle.load(open('transform.pkl', 'rb'))
 
-
 def load_data_to_mongo():
     data = pd.read_csv('main_data.csv')
+    data.fillna('', inplace=True)
+
+    # Drop duplicates before inserting into MongoDB
+    data = data.drop_duplicates(subset=['movie_title'])
+
+    # Convert to dictionary format for MongoDB
     data_dict = data.to_dict("records")
-    collection.insert_many(data_dict)
 
-
-def create_similarity():
-    data = pd.DataFrame(list(collection.find()))
-    # creating a count matrix
-    cv = CountVectorizer()
-    count_matrix = cv.fit_transform(data['comb'])
-    # creating a similarity score matrix
-    similarity = cosine_similarity(count_matrix)
-    return data, similarity
-
-
-def rcmd(m, data=None, similarity=None):
-    m = m.lower()
-    if data is None or similarity is None:
-        data, similarity = create_similarity()
-
-    if m not in data['movie_title'].unique():
-        return 'Sorry! The movie you requested is not in our database. Please check the spelling or try with some other movies'
-    else:
-        i = data.loc[data['movie_title'] == m].index[0]
-        lst = list(enumerate(similarity[i]))
-        lst = sorted(lst, key=lambda x: x[1], reverse=True)
-        lst = lst[1:11]  # excluding first item since it is the requested movie itself
-        l = []
-        for i in range(len(lst)):
-            a = lst[i][0]
-            l.append(data['movie_title'][a])
-        return l
-
+    # Insert only if there are no duplicates in the database
+    for record in data_dict:
+        if collection.count_documents({'movie_title': record['movie_title']}, limit=1) == 0:
+            collection.insert_one(record)
 
 def convert_to_list(my_list):
     my_list = my_list.split('","')
@@ -61,14 +39,11 @@ def convert_to_list(my_list):
     my_list[-1] = my_list[-1].replace('"]', '')
     return my_list
 
-
 def get_suggestions():
     data = pd.DataFrame(list(collection.find()))
     return list(data['movie_title'].str.capitalize())
 
-
 app = Flask(__name__)
-
 
 @app.route("/")
 @app.route("/home")
@@ -76,18 +51,20 @@ def home():
     suggestions = get_suggestions()
     return render_template('home.html', suggestions=suggestions)
 
+@app.route('/add_movie')
+def add_movie():
+    return render_template('add_movie.html')
 
 @app.route("/similarity", methods=["POST"])
 def similarity():
     movie = request.form['name']
     data, similarity_matrix = create_similarity()
-    rc = rcmd(movie, data, similarity_matrix)
+    rc = rcmd(movie, data, similarity_matrix, store_predictions=True)
     if isinstance(rc, str):
         return rc
     else:
         m_str = "---".join(rc)
         return m_str
-
 
 @app.route("/recommend", methods=["POST"])
 def recommend():
@@ -156,8 +133,35 @@ def recommend():
                            vote_count=vote_count, release_date=release_date, runtime=runtime, status=status,
                            genres=genres, movie_cards=movie_cards, reviews=movie_reviews, casts=casts, cast_details=cast_details)
 
+@app.route('/add_movie', methods=["POST"])
+def add_movie_to_db():
+    movie_title = request.form['movie_title'].strip().lower()
+    director_name = request.form['director_name'].strip()
+    actor_1_name = request.form['actor_1_name'].strip()
+    actor_2_name = request.form['actor_2_name'].strip()
+    actor_3_name = request.form['actor_3_name'].strip()
+    genres = request.form['genres'].strip()
+
+    comb = ' '.join(filter(None, [actor_1_name, actor_2_name, actor_3_name, director_name, genres]))
+
+    movie = {
+        "movie_title": movie_title,
+        "director_name": director_name,
+        "actor_1_name": actor_1_name,
+        "actor_2_name": actor_2_name,
+        "actor_3_name": actor_3_name,
+        "genres": genres,
+        "comb": comb
+    }
+
+    # Check if the movie already exists
+    if collection.count_documents({'movie_title': movie_title}, limit=1) == 0:
+        collection.insert_one(movie)
+        create_similarity()  # Update the similarity matrix after adding new movie
+        return jsonify("Movie added successfully!")
+    else:
+        return jsonify("Movie already exists in the database!")
 
 if __name__ == '__main__':
-    # Uncomment the following line if you need to load data to MongoDB
     load_data_to_mongo()
     app.run(debug=True)
