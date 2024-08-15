@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e5db8cee-dd55-46c3-b352-ba25926f839a" name="Changes" comment="Turning into content-based">
-      <change afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ground_truth.csv" afterDir="false" />
+    <list default="true" id="e5db8cee-dd55-46c3-b352-ba25926f839a" name="Changes" comment="The program is working but evaluate.py is not properly set up yet">
       <change afterPath="$PROJECT_DIR$/movies.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recommendation_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MovieRecommendation(Pycharm).iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MovieRecommendation(Pycharm).iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/recommend.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_movie.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recommendation_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/recommendation_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_movie.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add_movie.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -116,7 +112,7 @@
       <recent name="C:\Users\ASUS\OneDrive\Documents\Codes\MovieRecommendation(Pycharm)" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.evaluate">
+  <component name="RunManager" selected="Python.main">
     <configuration name="evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="MovieRecommendation(Pycharm)" />
       <option name="ENV_FILES" value="" />
@@ -165,8 +161,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.evaluate" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.evaluate" />
       </list>
     </recent_temporary>
   </component>
@@ -207,7 +203,7 @@
       <workItem from="1723524718176" duration="2265000" />
       <workItem from="1723528471443" duration="14158000" />
       <workItem from="1723624488988" duration="8752000" />
-      <workItem from="1723643186045" duration="36741000" />
+      <workItem from="1723643186045" duration="46586000" />
     </task>
     <task id="LOCAL-00001" summary="Only using tmdb api">
       <option name="closed" value="true" />
@@ -249,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723612866345</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="The program is working but evaluate.py is not properly set up yet">
+      <option name="closed" value="true" />
+      <created>1723743213421</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723743213421</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,10 +287,11 @@
     <MESSAGE value="Old version" />
     <MESSAGE value="Incomplete but it is working" />
     <MESSAGE value="Turning into content-based" />
-    <option name="LAST_COMMIT_MESSAGE" value="Turning into content-based" />
+    <MESSAGE value="The program is working but evaluate.py is not properly set up yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="The program is working but evaluate.py is not properly set up yet" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/MovieRecommendation_Pycharm_$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1723741873263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/MovieRecommendation_Pycharm_$main.coverage" NAME="main Coverage Results" MODIFIED="1723741735238" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/MovieRecommendation_Pycharm_$main.coverage" NAME="main Coverage Results" MODIFIED="1723752675199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

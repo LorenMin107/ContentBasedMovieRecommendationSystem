@@ -44,6 +44,23 @@
     color: #ffffff;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-button {
+  margin: 0 5px; /* Adjust space between buttons as needed */
+}
+
+/* Optional: Adjust button styles for consistency */
+.btn-primary, .btn-secondary {
+  border-radius: 20px;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
 #content {
     background-color: #000000; /* Ensure content area also has a black background */
     font-family: 'Noto Sans JP', sans-serif;

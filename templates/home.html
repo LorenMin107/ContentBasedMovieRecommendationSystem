@@ -22,51 +22,47 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/css/autoComplete.min.css">
 
   <!-- External CSS -->
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
   <script type="text/javascript">
-    let films = {{suggestions|tojson}};
+    let films = {{ suggestions | tojson }};
   </script>
-
 </head>
 
 <body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
-<div class="body-content">
-	<div class="ml-container" style="display: block;">
-    <h1 class="app-title" style="text-align: center">CineMatch</h1>
-    <div class="form-group shadow-textarea" style="margin-top: 30px;text-align: center;color: white;">
-        <input type="text" name="movie" class="movie form-control" id="autoComplete" autocomplete="off" placeholder="Enter the Movie Name" style="background-color: #ffffff;border-color:#ffffff;width: 60%;color: #181818" required="required" />
+  <div class="body-content">
+    <div class="ml-container" style="display: block;">
+      <h1 class="app-title" style="text-align: center">CineMatch</h1>
+      <div class="form-group shadow-textarea" style="margin-top: 30px; text-align: center; color: white;">
+        <input type="text" name="movie" class="movie form-control" id="autoComplete" autocomplete="off" placeholder="Enter the Movie Name" style="background-color: #ffffff; border-color: #ffffff; width: 60%; color: #181818" required="required" />
         <br>
+      </div>
+
+      <div class="form-group text-center">
+        <div class="btn-container">
+          <button class="btn btn-primary btn-block movie-button" style="background-color: rgb(209,30,40); border-color: #ff7a7a; color: #ffffff" disabled="disabled">Recommend Me</button>
+          <a href="{{ url_for('add_movie') }}" class="btn btn-secondary movie-button" style="background-color: #6c757d; color: #ffffff; border-color: #5a6268; margin-left: 10px;">Add New Movie</a>
+        </div>
+        <br><br>
+      </div>
     </div>
 
-    <div class="form-group" style="text-align: center;">
-      <button class="btn btn-primary btn-block movie-button" style="background-color: rgb(209,30,40); text-align: center; border-color: #ff7a7a; width:120px; color: #ffffff" disabled="disabled" >Enter</button><br><br>
-    </div>
-	</div>
+    <div id="loader" class="text-center"></div>
 
-    <div class="form-group" style="text-align: center;">
-        <a href="{{ url_for('add_movie') }}" class="btn btn-secondary" style="background-color: #6c757d; color: #ffffff; border-color: #5a6268;">Add New Movie</a>
+    <div class="fail">
+      <h3>Sorry! The movie you requested is not in our database.
+      Please check the spelling or try with other movies!</h3>
     </div>
 
-  <div id="loader" class="text-center">
-  </div>
-
-  <div class="fail">
-    <h3>Sorry! The movie you requested is not in our database.
-    Please check the spelling or try with other movies!</h3>
-  </div>
-
-	<div class="results">
+    <div class="results">
       <h2 id="name" class="text-uppercase"></h2>
-	</div>
-</div>
-	<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+    </div>
+  </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="{{url_for('static', filename='recommend.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='autocomplete.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='recommend.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 </body>
 </html>

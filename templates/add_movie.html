@@ -80,28 +80,33 @@
         });
     }
 
-    function fetchMovieDetails(movieId, apiKey) {
-        $.ajax({
-            type: 'GET',
-            url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=credits`,
-            success: function(details) {
-                document.getElementById('director-name').innerText = details.credits.crew.find(c => c.job === 'Director')?.name || 'N/A';
-                document.getElementById('actors').innerText = details.credits.cast.slice(0, 3).map(actor => actor.name).join(', ') || 'N/A';
-                document.getElementById('genres').innerText = details.genres.map(genre => genre.name).join(', ') || 'N/A';
+function standardizeGenres(genres) {
+    return genres.split(', ').map(genre => genre.trim().replace('Science Fiction', 'Sci-Fi')).join(', ');
+}
 
-                // Display poster image with reduced size
-                var posterPath = details.poster_path ? `https://image.tmdb.org/t/p/w500${details.poster_path}` : '';
-                document.getElementById('poster-image').src = posterPath;
-                document.getElementById('poster-image').alt = details.title;
+function fetchMovieDetails(movieId, apiKey) {
+    $.ajax({
+        type: 'GET',
+        url: `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&append_to_response=credits`,
+        success: function(details) {
+            document.getElementById('director-name').innerText = details.credits.crew.find(c => c.job === 'Director')?.name || 'N/A';
+            document.getElementById('actors').innerText = details.credits.cast.slice(0, 3).map(actor => actor.name).join(', ') || 'N/A';
+            document.getElementById('genres').innerText = standardizeGenres(details.genres.map(genre => genre.name).join(', ')) || 'N/A';
 
-                // Show movie details section
-                document.getElementById('movie-details').style.display = 'block';
-            },
-            error: function() {
-                alert('Error fetching movie details.');
-            }
-        });
-    }
+            // Display poster image with reduced size
+            var posterPath = details.poster_path ? `https://image.tmdb.org/t/p/w500${details.poster_path}` : '';
+            document.getElementById('poster-image').src = posterPath;
+            document.getElementById('poster-image').alt = details.title;
+
+            // Show movie details section
+            document.getElementById('movie-details').style.display = 'block';
+        },
+        error: function() {
+            alert('Error fetching movie details.');
+        }
+    });
+}
+
 
     $('#movie-form').on('submit', function(event) {
         event.preventDefault();
