@@ -243,11 +243,11 @@ h6 {
 
 }
 
-.poster {
-    -webkit-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
-    -moz-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
-    box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);
-}
+/*.poster {*/
+/*    -webkit-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);*/
+/*    -moz-box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);*/
+/*    box-shadow: 0px 1px 15px 4px rgba(250, 250, 250, 1);*/
+/*}*/
 
 .card:hover {
     cursor: pointer;
@@ -304,6 +304,10 @@ h6 {
     position: relative;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 .table td {
     border-color: #fca311;
     border-style: solid;
@@ -325,3 +329,113 @@ h6 {
 .form-control {
     color: #034078;
 }
+
+
+
+.castcard {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.cast-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    color: #eae7e7;
+    text-align: center;
+    padding: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cast-img {
+    transition: all 0.75s ease;
+}
+
+.cast-img:hover {
+    filter: brightness(50%);
+}
+
+.imghvr:hover .cast-overlay {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.cast-real-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cast-character {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+
+
+/* Review Table Styles */
+.review-table {
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+    word-wrap: break-word; /* Allow words to break and wrap */
+}
+
+.review-table th,
+.review-table td {
+    border: none;
+}
+
+.comment-header {
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sentiment-header {
+    background-color: #444;
+    color: #fff;
+    padding: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.review-row {
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.review-row:hover {
+    background-color: #444;
+}
+
+.comment-cell {
+    padding: 15px;
+    vertical-align: middle;
+    font-size: 14px; /* Reduced font size for better fit */
+    line-height: 1.5; /* Adjust line height for readability */
+    word-wrap: break-word; /* Ensure long words wrap */
+    overflow-wrap: break-word; /* Handle very long words */
+    text-overflow: ellipsis; /* Add ellipsis for overflow text */
+    white-space: normal; /* Allow text to wrap */
+}
+
+.sentiment-cell {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+}
+.sentiment-cell .fa {
+    font-size: 24px; /* Adjust size as needed */
+    color: #00bfff; /* Change color if desired */
+}
+

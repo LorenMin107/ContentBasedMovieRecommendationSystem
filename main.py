@@ -201,9 +201,10 @@ def recommend():
 
     logging.info(f'Recommendations for movie: {title} - Found {len(movie_reviews)} reviews')
 
-    return render_template('recommend.html', title=title, poster=poster, overview=overview, vote_average=vote_average,
-                           vote_count=vote_count, release_date=release_date, runtime=runtime, status=status,
-                           genres=genres, movie_cards=movie_cards, reviews=movie_reviews, casts=casts, cast_details=cast_details)
+    return render_template('recommend.html', title=title, poster=poster, overview=overview,
+                           vote_average=vote_average, vote_count=vote_count, release_date=release_date, runtime=runtime,
+                           status=status, genres=genres, movie_cards=movie_cards, reviews=movie_reviews, casts=casts,
+                           cast_details=cast_details)
 
 def standardize_genres(genres):
     return ', '.join(genre.strip().replace('Science Fiction', 'Sci-Fi') for genre in genres.split(', '))

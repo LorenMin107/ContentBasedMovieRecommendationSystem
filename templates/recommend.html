@@ -29,10 +29,10 @@
 <div id="mycontent">
     <div id="mcontent">
       <div class="poster-lg">
-        <img class="poster" style="border-radius: 40px;margin-left: 90px;" height="400" width="250" src={{poster}} alt="">
+        <img class="poster" style="border-radius: 10px;margin-left: 90px;" height="400" width="250" src={{poster}} alt="">
       </div>
       <div class="poster-sm text-center">
-        <img class="poster" style="border-radius: 40px;margin-bottom: 5%;" height="400" width="250" src={{poster}} alt="">
+        <img class="poster" style="border-radius: 10px;margin-bottom: 5%;" height="400" width="250" src={{poster}} alt="">
       </div>
       <div id="details">
         <br/>
@@ -78,69 +78,66 @@
   </div>
   {% endfor %}
 
-    {% if casts|length > 1 %}
-      <div class="movie" style="color: #E8E8E8;">
-          <h2 style="font-family: 'Helvetica', sans-serif; text-align: center">TOP CAST</h2>
-          <h5 style="text-align: center">(Click on the cast to know more)</h5>
-      </div>
+  {% if casts|length > 1 %}
+    <div class="movie" style="color: #E8E8E8;">
+        <h2 style="font-family: 'Helvetica', sans-serif; text-align: center">TOP CAST</h2>
+        <h5 style="text-align: center">(Click on the cast to know more)</h5>
+    </div>
 
-  <div class="movie-content">
-        {% for name, details in casts.items() if not casts.hidden %}
-          <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
-            <div class="imghvr">
-              <img class="card-img-top cast-img" id="{{details[0]}}_{{idx}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
-              <figcaption class="fig">
-                <button class="card-btn btn btn-danger"> Know More </button>
-              </figcaption>
-            </div>
-            <div class="card-body" style="font-family: 'Helvetica', sans-serif;font-size: 18px;">
-              <h5 class="card-title">{{name|upper}}</h5>
-              <h5 class="card-title" style="font-size: 18px"><span style="color:#756969;font-size: 18px;">AS {{details[1]|upper}}</span></h5>
+    <div class="movie-content">
+      {% for name, details in casts.items() if not casts.hidden %}
+        <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
+          <div class="imghvr">
+            <img class="card-img-top cast-img" id="{{details[0]}}_{{idx}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
+            <div class="cast-overlay">
+              <h5 class="cast-real-name">{{name|upper}}</h5>
+              <h6 class="cast-character">AS {{details[1]|upper}}</h6>
             </div>
           </div>
+        </div>
       {% endfor %}
+    </div>
+  {% endif %}
+
+
+
+{% if reviews %}
+<h2 style="color:white; text-align: center; margin-top: 30px; font-weight: bold;">USER REVIEWS</h2>
+<div class="col-md-10 offset-md-1" style="margin: 25px auto 0;">
+    <table class="table table-bordered review-table">
+        <thead>
+            <tr>
+                <th class="text-center comment-header" scope="col">Comments</th>
+                <th class="text-center sentiment-header" scope="col">Sentiments</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review, status in reviews.items() if not reviews.hidden %}
+            <tr class="review-row">
+                <td class="comment-cell" style="color:#ffffff;">{{review}}</td>
+                <td class="sentiment-cell" style="color:#819ea2;">
+                    {% if status == 'Good' %}
+                    <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+    <div style="color:white;">
+        <h1 style="color:white"> This movie is not released yet. Stay tuned! </h1>
     </div>
 {% endif %}
 
 
-    {% if reviews %}
-    <h2 style="color:white; text-align: center">USER REVIEWS</h2>
-     <div class="col-md-12" style="margin: 25px auto 0;">
-        <table class="table table-bordered" bordercolor="white" style="color:white">
-            <thead>
-                <tr>
-                    <th class="text-center" scope="col" style="width: 75%">Comments</th>
-                    <th class="text-center" scope="col">Sentiments</th>
-                </tr>
-            </thead>
-
-            <tbody>
-		      {% for review, status in reviews.items() if not reviews.hidden %}
-		      <tr style="background-color:#e5091485;">
-              	  <td>{{review}}</td>
-	              <td>
-	                  {{status}} :
-	                  {% if status =='Good' %}
-	                    &#128515;
-	                  {% else %}
-	                    &#128534;
-	                  {% endif %}
-	              </td>
-          		</tr>
-      			{% endfor %}
-    		</tbody>
- 		 </table>
-    </div>
-    {% else %}
-    <div style="color:white;">
-      <h1 style="color:white"> This movie is not released yet. Stay tuned! </h1>
-    </div>
-    {% endif %}
-
-      {% if movie_cards|length > 1 %}
-
-      <div class="movie" style="color: #E8E8E8; text-align: center">
-      <h3>RECOMMENDED MOVIES FOR YOU</h3><h5>(Click any of the movies to get recommendation)</h5>
+    {% if movie_cards|length > 1 %}
+    <div class="movie" style="color: #E8E8E8; text-align: center">
+      <h3>RECOMMENDED MOVIES FOR YOU</h3>
+      <h5>(Click any of the movies to get recommendation)</h5>
     </div>
 
     <div class="movie-content">
@@ -149,14 +146,11 @@
           <div class="imghvr">
             <img class="card-img-top" height="360" width="240" alt="{{title}} - poster" src={{poster}}>
             <figcaption class="fig">
-              <button class="card-btn btn btn-danger"> Click Me </button>
+              <button class="card-btn btn btn-danger"> {{title|truncate(30)}} </button>
             </figcaption>
            </div>
-          <div class="card-body">
-            <h5 class="card-title">{{title|capitalize}}</h5>
-          </div>
         </div>
-    {% endfor %}
+      {% endfor %}
     </div>
     {% endif %}
 
