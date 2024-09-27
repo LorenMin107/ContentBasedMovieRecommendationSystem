@@ -23,8 +23,8 @@ logging.basicConfig(level=logging.INFO,
 
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
-db = client['movie_db']  # Replace with your database name
-collection = db['movies']  # Replace with your collection name
+db = client['movie_db']
+collection = db['movies']
 predictions_collection = db['predictions']  # Collection for storing predictions
 
 # Load the NLP model and TF-IDF vectorizer from disk

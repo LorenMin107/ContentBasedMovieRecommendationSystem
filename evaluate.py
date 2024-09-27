@@ -1,3 +1,4 @@
+#no need to run since i am using offline testing in main.py
 import pandas as pd
 from pymongo import MongoClient
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
@@ -5,7 +6,7 @@ from recommendation_engine import rcmd
 
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
-db = client['movie_db']  # Replace with your database name
+db = client['movie_db']
 predictions_collection = db['predictions']  # Collection where predictions are stored
 
 

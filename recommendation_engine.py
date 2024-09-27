@@ -1,5 +1,4 @@
 # recommendation_engine.py
-
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
@@ -16,8 +15,8 @@ logging.basicConfig(level=logging.INFO,
 
 # MongoDB connection
 client = MongoClient('mongodb://localhost:27017/')
-db = client['movie_db']  # Replace with your database name
-collection = db['movies']  # Replace with your collection name
+db = client['movie_db']
+collection = db['movies']
 predictions_collection = db['predictions']  # Collection for storing predictions
 
 def clean_genre_data():
